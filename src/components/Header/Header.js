@@ -38,7 +38,12 @@ const Header = () => {
             </button>
           </DesktopActionGroup>
         <Logo />
-        <SubscribeWrapper>Subscribe</SubscribeWrapper>
+        <SubscribeWrapper>
+          <Button>Subscribe</Button>
+          <SubLink href="/">
+            Already a subscriber?
+          </SubLink>
+        </SubscribeWrapper>
       </MainHeader>
     </header>
   );
@@ -81,22 +86,36 @@ const DesktopActionGroup = styled(ActionGroup)`
 `;
 
 const SubscribeWrapper = styled.div`
-  justify-self: end;
-
   display: none;
-
+  
+  /* desktop styles */
   @media ${QUERIES.laptopAndUp} {
     display: revert;
+    position: relative;
+    justify-self: end;
   }
 `;
 
+const SubLink = styled.a`
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  margin-top: 8px;
+  font-size: 0.875rem;
+  color: var(--color-gray-900);
+  font-style: italic;
+  text-decoration: underline;
+`;
+
 const MainHeader = styled(MaxWidthWrapper)`
+/* mobile first by default */
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 32px;
   margin-bottom: 48px;
 
+  /* desktop with a media query */
   @media ${QUERIES.laptopAndUp} {
     display: grid;
     /* set three columns */
