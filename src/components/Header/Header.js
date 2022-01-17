@@ -97,10 +97,12 @@ const SubscribeWrapper = styled.div`
 `;
 
 const SubLink = styled.a`
+  /* absolute positioning for the link */
   position: absolute;
   width: 100%;
   text-align: center;
   margin-top: 8px;
+  /* font properties */
   font-size: 0.875rem;
   color: var(--color-gray-900);
   font-style: italic;
@@ -115,6 +117,12 @@ const MainHeader = styled(MaxWidthWrapper)`
   margin-top: 32px;
   margin-bottom: 48px;
 
+  /* tablet and up */
+  @media ${QUERIES.tabletAndUp} {
+    margin-top: 48px;
+    margin-bottom: 72px;
+  }
+
   /* desktop with a media query */
   @media ${QUERIES.laptopAndUp} {
     display: grid;
@@ -122,6 +130,8 @@ const MainHeader = styled(MaxWidthWrapper)`
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
     justify-content: start;
+    margin-top: 16px;
+    margin-bottom: 72px;
   }
 `;
 
