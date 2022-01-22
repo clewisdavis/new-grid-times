@@ -33,13 +33,13 @@ const MainStoryGrid = () => {
 
       <OpinionSection>
         <SectionTitle>Opinion</SectionTitle>
-        <StoryList>
+        <OpinionStoryList>
           {OPINION_STORIES.map((story, index) => (
-            <VerticalStoryWrapper key={story.id} >
+            <OpinionStoryWrapper key={story.id} >
               <OpinionStory {...story} />
-            </VerticalStoryWrapper>
+            </OpinionStoryWrapper>
           ))}
-        </StoryList>
+        </OpinionStoryList>
       </OpinionSection>
 
       <AdvertisementSection>
@@ -67,6 +67,14 @@ const Wrapper = styled.div`
     grid-template-columns: 2fr 1fr;
     gap: 48px 0;
   }
+
+  @media ${QUERIES.laptopAndUp} {
+    grid-template-areas:
+      'main-story secondary-stories opinion-stories'
+      'main-story advertisement advertisement';
+    grid-template-columns: 5fr 4fr 3fr;
+    gap: 0 0;
+  }
 `;
 
 const MainStorySection = styled.section`
@@ -81,11 +89,24 @@ const MainStorySection = styled.section`
 
 const SecondaryStorySection = styled.section`
   grid-area: secondary-stories;
+
+  @media ${QUERIES.laptopAndUp} {
+    padding-right: 16px;
+    margin-right: 16px;
+    border-right: 1px solid var(--color-gray-300);
+  }
 `;
 
 const StoryList = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+const OpinionStoryList = styled(StoryList)`
+  @media ${QUERIES.tabletOnly} {
+    flex-direction: row;
+    gap: 32px;
+  }
 `;
 
 const VerticalStoryWrapper = styled.div`
@@ -97,12 +118,33 @@ const VerticalStoryWrapper = styled.div`
   }
 `;
 
+const OpinionStoryWrapper = styled(VerticalStoryWrapper)`
+  flex: 1;
+  @media ${QUERIES.tabletOnly} {
+    &:not(:last-of-type) {
+      border-bottom: revert;
+      padding-bottom: revert;
+      margin-bottom: revert;
+    }
+  }
+`;
+
 const OpinionSection = styled.section`
   grid-area: opinion-stories;
+
+  @media ${QUERIES.laptopAndUp} {
+    margin-top: -8px;
+  }
 `;
 
 const AdvertisementSection = styled.section`
   grid-area: advertisement;
+
+  @media ${QUERIES.laptopAndUp} {
+    padding-top: 16px;
+    margin-top: 16px;
+    border-top: 1px solid var(--color-gray-300);
+  }
 `;
 
 export default MainStoryGrid;
